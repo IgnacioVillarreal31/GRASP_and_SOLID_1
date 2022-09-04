@@ -41,7 +41,8 @@ namespace Full_GRASP_And_SOLID.Library
             double resultado = 0;
             foreach (Step step in this.steps)
             {
-                resultado+=step.Input.UnitCost + (step.Time*step.Equipment.HourlyCost);
+                double time = step.Time;
+                resultado+=step.Input.UnitCost*step.Quantity/1000 + ((time/3600)*(step.Equipment.HourlyCost));
             }
             return resultado;
         }
